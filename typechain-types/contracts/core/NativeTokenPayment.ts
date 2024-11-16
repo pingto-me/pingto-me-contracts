@@ -68,6 +68,7 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
     "setUsdPrice(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "usdPrice()": FunctionFragment;
+    "useChainlink()": FunctionFragment;
   };
 
   getFunction(
@@ -89,6 +90,7 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
       | "setUsdPrice"
       | "supportsInterface"
       | "usdPrice"
+      | "useChainlink"
   ): FunctionFragment;
 
   encodeFunctionData(
@@ -156,6 +158,10 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(functionFragment: "usdPrice", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "useChainlink",
+    values?: undefined
+  ): string;
 
   decodeFunctionResult(functionFragment: "ADMIN_ROLE", data: BytesLike): Result;
   decodeFunctionResult(
@@ -204,6 +210,10 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "usdPrice", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "useChainlink",
+    data: BytesLike
+  ): Result;
 
   events: {
     "PaymentMade(address,uint256,string,string)": EventFragment;
@@ -376,6 +386,8 @@ export interface NativeTokenPayment extends BaseContract {
     ): Promise<[boolean]>;
 
     usdPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    useChainlink(overrides?: CallOverrides): Promise<[boolean]>;
   };
 
   ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
@@ -460,6 +472,8 @@ export interface NativeTokenPayment extends BaseContract {
 
   usdPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
+  useChainlink(overrides?: CallOverrides): Promise<boolean>;
+
   callStatic: {
     ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
 
@@ -542,6 +556,8 @@ export interface NativeTokenPayment extends BaseContract {
     ): Promise<boolean>;
 
     usdPrice(overrides?: CallOverrides): Promise<BigNumber>;
+
+    useChainlink(overrides?: CallOverrides): Promise<boolean>;
   };
 
   filters: {
@@ -667,6 +683,8 @@ export interface NativeTokenPayment extends BaseContract {
     ): Promise<BigNumber>;
 
     usdPrice(overrides?: CallOverrides): Promise<BigNumber>;
+
+    useChainlink(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -746,5 +764,7 @@ export interface NativeTokenPayment extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     usdPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    useChainlink(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

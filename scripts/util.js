@@ -1,0 +1,7 @@
+let C = await ethers.getContractFactory("ManualPriceProvider")
+let mp = await C.attach("0x33533a67C62AcF8595CfDFC261F90b29bB617c39")
+await mp.setPrice("400000000000000000000")
+let P = await ethers.getContractFactory("NativeTokenPayment")
+let p = await P.attach("0xa84aC71C1F6C5B533dA717f4eb88596bB2871aBf")
+await p.setUsdPrice("1000000000000000000")
+(await p.getNativePrice("1")).toString()

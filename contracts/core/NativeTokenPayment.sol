@@ -31,6 +31,8 @@ contract NativeTokenPayment is AccessControl, ReentrancyGuard {
     // Event to emit when a payment is made
     event PaymentMade(address indexed user, uint256 amount, string orderId, string eventId);
 
+    bool public useChainlink = false;
+
     // Constructor to set up the price provider and admin address
     constructor(address priceProviderAddress, address _adminAddress) {
         // Set up roles - the deployer is given both the default admin role and the custom admin role
@@ -78,10 +80,14 @@ contract NativeTokenPayment is AccessControl, ReentrancyGuard {
 
     // Function to get the native token price required for the payment
     function getNativePrice(string memory eventId) public view returns (uint256) {
-        // Get the current price of the native token from the price provider using the eventId
-        uint256 price = priceProvider.getPrice(eventId);
-        // Calculate the equivalent native token amount for the given USD price
-        return (usdPrice * 1e18) / price;
+        if(!useChainlink){
+            // Get the current price of the native token from the price provider using the eventId
+            uint256 price = priceProvider.getPrice(eventId);
+            // Calculate the equivalent native token amount for the given USD price
+            return (usdPrice * 1e18) / price;
+        }else{
+            return priceProvider.getPrice(eventId);
+        }
     }
 
     // Function to get the payment details for a given order ID

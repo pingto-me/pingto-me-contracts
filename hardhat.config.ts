@@ -106,6 +106,26 @@ const config: any = {
       url: 'https://rpc-testnet.bitkubchain.io',
       chainId: 25925,
     },
+    hedera_testnet: {
+      url: 'https://testnet.hashio.io/api',
+      accounts: accounts,
+      chainId: 296,
+    },
+    celo_testnet: {
+      url: 'https://alfajores-forno.celo-testnet.org',
+      accounts: accounts,
+      chainId: 44787,
+    },
+    base_testnet: {
+      url: 'https://sepolia.base.org',
+      accounts: accounts,
+      chainId: 84532,
+    },
+    rootstock_testnet: {
+      url: 'https://public-node.testnet.rsk.co',
+      accounts: accounts,
+      chainId: 31,
+    },
     taiko: {
       url: 'https://rpc.test.taiko.xyz',
       accounts: accounts,
@@ -119,8 +139,12 @@ const config: any = {
       sepolia: 'KBZ53MKPP551QTVDYSV8S961FEUC96F8QW',
       polygon_mumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
       bkc_testnet: 'key',
+      hedera_testnet: 'key',
+      celo_testnet: 'PQ6KHZ9W2YZ7HI3KW651DIEMWS2HUEIXYN',
       bkc: 'key',
+      rootstock_testnet:'key',
       polygonMumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
+      base_testnet: 'HWIGT6I8F9PZHQXKWM3WM57P4TFQC1ISWS'
     },
     customChains: [
       {
@@ -129,6 +153,46 @@ const config: any = {
         urls: {
           apiURL: 'https://testnet.bkcscan.com/api',
           browserURL: 'https://testnet.bkcscan.com/',
+        },
+      },
+      {
+        network: 'rootstock_testnet',
+        chainId: 31,
+        urls: {
+          apiURL: 'https://explorer.testnet.rootstock.io/api',
+          browserURL: 'https://explorer.testnet.rootstock.io/',
+        },
+      },
+      {
+        network: 'hedera_testnet',
+        chainId: 296,
+        urls: {
+          apiURL: 'https://testnet.hashio.io/api',
+          browserURL: 'https://testnet.bkcscan.com/',
+        },
+      },
+      {
+        network: 'celo_testnet',
+        chainId: 44787,
+        urls: {
+          apiURL: 'https://api-alfajores.celoscan.io/api',
+          browserURL: 'https://alfajores.celoscan.io',
+        },
+      },
+      {
+        network: 'base_testnet',
+        chainId: 84532,
+        urls: {
+          apiURL: 'https://api-sepolia.basescan.org/api',
+          browserURL: 'https://sepolia.basescan.org/',
+        },
+      },
+      {
+        network: 'rootstock_testnet',
+        chainId: 31,
+        urls: {
+          apiURL: 'https://api-sepolia.basescan.org/api',
+          browserURL: 'https://sepolia.basescan.org/',
         },
       },
       {

@@ -33,12 +33,19 @@ export declare namespace NativeTokenPayment {
     user: PromiseOrValue<string>;
     amount: PromiseOrValue<BigNumberish>;
     timestamp: PromiseOrValue<BigNumberish>;
+    eventId: PromiseOrValue<string>;
   };
 
-  export type PaymentDetailStructOutput = [string, BigNumber, BigNumber] & {
+  export type PaymentDetailStructOutput = [
+    string,
+    BigNumber,
+    BigNumber,
+    string
+  ] & {
     user: string;
     amount: BigNumber;
     timestamp: BigNumber;
+    eventId: string;
   };
 }
 
@@ -47,12 +54,12 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
     "ADMIN_ROLE()": FunctionFragment;
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "adminAddress()": FunctionFragment;
-    "getNativePrice()": FunctionFragment;
+    "getNativePrice(string)": FunctionFragment;
     "getPaymentDetail(string)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "grantRole(bytes32,address)": FunctionFragment;
     "hasRole(bytes32,address)": FunctionFragment;
-    "pay(string)": FunctionFragment;
+    "pay(string,string)": FunctionFragment;
     "payments(string)": FunctionFragment;
     "priceProvider()": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
@@ -98,7 +105,7 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getNativePrice",
-    values?: undefined
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "getPaymentDetail",
@@ -118,7 +125,7 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "pay",
-    values: [PromiseOrValue<string>]
+    values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "payments",
@@ -199,7 +206,7 @@ export interface NativeTokenPaymentInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "usdPrice", data: BytesLike): Result;
 
   events: {
-    "PaymentMade(address,uint256,string)": EventFragment;
+    "PaymentMade(address,uint256,string,string)": EventFragment;
     "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
     "RoleGranted(bytes32,address,address)": EventFragment;
     "RoleRevoked(bytes32,address,address)": EventFragment;
@@ -215,9 +222,10 @@ export interface PaymentMadeEventObject {
   user: string;
   amount: BigNumber;
   orderId: string;
+  eventId: string;
 }
 export type PaymentMadeEvent = TypedEvent<
-  [string, BigNumber, string],
+  [string, BigNumber, string, string],
   PaymentMadeEventObject
 >;
 
@@ -293,7 +301,10 @@ export interface NativeTokenPayment extends BaseContract {
 
     adminAddress(overrides?: CallOverrides): Promise<[string]>;
 
-    getNativePrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getNativePrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     getPaymentDetail(
       orderId: PromiseOrValue<string>,
@@ -319,6 +330,7 @@ export interface NativeTokenPayment extends BaseContract {
 
     pay(
       orderId: PromiseOrValue<string>,
+      eventId: PromiseOrValue<string>,
       overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -326,10 +338,11 @@ export interface NativeTokenPayment extends BaseContract {
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
-      [string, BigNumber, BigNumber] & {
+      [string, BigNumber, BigNumber, string] & {
         user: string;
         amount: BigNumber;
         timestamp: BigNumber;
+        eventId: string;
       }
     >;
 
@@ -371,7 +384,10 @@ export interface NativeTokenPayment extends BaseContract {
 
   adminAddress(overrides?: CallOverrides): Promise<string>;
 
-  getNativePrice(overrides?: CallOverrides): Promise<BigNumber>;
+  getNativePrice(
+    eventId: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   getPaymentDetail(
     orderId: PromiseOrValue<string>,
@@ -397,6 +413,7 @@ export interface NativeTokenPayment extends BaseContract {
 
   pay(
     orderId: PromiseOrValue<string>,
+    eventId: PromiseOrValue<string>,
     overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -404,10 +421,11 @@ export interface NativeTokenPayment extends BaseContract {
     arg0: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<
-    [string, BigNumber, BigNumber] & {
+    [string, BigNumber, BigNumber, string] & {
       user: string;
       amount: BigNumber;
       timestamp: BigNumber;
+      eventId: string;
     }
   >;
 
@@ -449,7 +467,10 @@ export interface NativeTokenPayment extends BaseContract {
 
     adminAddress(overrides?: CallOverrides): Promise<string>;
 
-    getNativePrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getNativePrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getPaymentDetail(
       orderId: PromiseOrValue<string>,
@@ -475,6 +496,7 @@ export interface NativeTokenPayment extends BaseContract {
 
     pay(
       orderId: PromiseOrValue<string>,
+      eventId: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -482,10 +504,11 @@ export interface NativeTokenPayment extends BaseContract {
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
-      [string, BigNumber, BigNumber] & {
+      [string, BigNumber, BigNumber, string] & {
         user: string;
         amount: BigNumber;
         timestamp: BigNumber;
+        eventId: string;
       }
     >;
 
@@ -522,15 +545,17 @@ export interface NativeTokenPayment extends BaseContract {
   };
 
   filters: {
-    "PaymentMade(address,uint256,string)"(
+    "PaymentMade(address,uint256,string,string)"(
       user?: PromiseOrValue<string> | null,
       amount?: null,
-      orderId?: null
+      orderId?: null,
+      eventId?: null
     ): PaymentMadeEventFilter;
     PaymentMade(
       user?: PromiseOrValue<string> | null,
       amount?: null,
-      orderId?: null
+      orderId?: null,
+      eventId?: null
     ): PaymentMadeEventFilter;
 
     "RoleAdminChanged(bytes32,bytes32,bytes32)"(
@@ -574,7 +599,10 @@ export interface NativeTokenPayment extends BaseContract {
 
     adminAddress(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getNativePrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getNativePrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getPaymentDetail(
       orderId: PromiseOrValue<string>,
@@ -600,6 +628,7 @@ export interface NativeTokenPayment extends BaseContract {
 
     pay(
       orderId: PromiseOrValue<string>,
+      eventId: PromiseOrValue<string>,
       overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -649,7 +678,10 @@ export interface NativeTokenPayment extends BaseContract {
 
     adminAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getNativePrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getNativePrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     getPaymentDetail(
       orderId: PromiseOrValue<string>,
@@ -675,6 +707,7 @@ export interface NativeTokenPayment extends BaseContract {
 
     pay(
       orderId: PromiseOrValue<string>,
+      eventId: PromiseOrValue<string>,
       overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

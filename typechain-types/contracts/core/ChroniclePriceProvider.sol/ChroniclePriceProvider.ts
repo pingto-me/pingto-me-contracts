@@ -32,7 +32,7 @@ export interface ChroniclePriceProviderInterface extends utils.Interface {
     "ADMIN_ROLE()": FunctionFragment;
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "chronicle()": FunctionFragment;
-    "getPrice()": FunctionFragment;
+    "getPrice(string)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "grantRole(bytes32,address)": FunctionFragment;
     "hasRole(bytes32,address)": FunctionFragment;
@@ -68,7 +68,10 @@ export interface ChroniclePriceProviderInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "chronicle", values?: undefined): string;
-  encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getPrice",
+    values: [PromiseOrValue<string>]
+  ): string;
   encodeFunctionData(
     functionFragment: "getRoleAdmin",
     values: [PromiseOrValue<BytesLike>]
@@ -220,7 +223,10 @@ export interface ChroniclePriceProvider extends BaseContract {
 
     chronicle(overrides?: CallOverrides): Promise<[string]>;
 
-    getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -270,7 +276,10 @@ export interface ChroniclePriceProvider extends BaseContract {
 
   chronicle(overrides?: CallOverrides): Promise<string>;
 
-  getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+  getPrice(
+    eventId: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   getRoleAdmin(
     role: PromiseOrValue<BytesLike>,
@@ -320,7 +329,10 @@ export interface ChroniclePriceProvider extends BaseContract {
 
     chronicle(overrides?: CallOverrides): Promise<string>;
 
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -409,7 +421,10 @@ export interface ChroniclePriceProvider extends BaseContract {
 
     chronicle(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -462,7 +477,10 @@ export interface ChroniclePriceProvider extends BaseContract {
 
     chronicle(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,

@@ -4,6 +4,7 @@
 import type {
   BaseContract,
   BigNumber,
+  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
@@ -28,156 +29,275 @@ import type {
 
 export interface ChainlinkPriceProviderInterface extends utils.Interface {
   functions: {
-    "ADMIN_ROLE()": FunctionFragment;
-    "DEFAULT_ADMIN_ROLE()": FunctionFragment;
-    "getPrice()": FunctionFragment;
-    "getRoleAdmin(bytes32)": FunctionFragment;
-    "grantRole(bytes32,address)": FunctionFragment;
-    "hasRole(bytes32,address)": FunctionFragment;
-    "renounceRole(bytes32,address)": FunctionFragment;
-    "revokeRole(bytes32,address)": FunctionFragment;
-    "setPriceFeed(address)": FunctionFragment;
-    "supportsInterface(bytes4)": FunctionFragment;
+    "acceptOwnership()": FunctionFragment;
+    "checkStringHasValue(string)": FunctionFragment;
+    "donID()": FunctionFragment;
+    "eventPrices(string)": FunctionFragment;
+    "gasLimit()": FunctionFragment;
+    "getPrice(string)": FunctionFragment;
+    "handleOracleFulfillment(bytes32,bytes,bytes)": FunctionFragment;
+    "isStringEmpty(string)": FunctionFragment;
+    "owner()": FunctionFragment;
+    "relayer()": FunctionFragment;
+    "requestEvent(bytes32)": FunctionFragment;
+    "requestPrice(string)": FunctionFragment;
+    "router()": FunctionFragment;
+    "s_lastError()": FunctionFragment;
+    "s_lastRequestId()": FunctionFragment;
+    "s_lastResponse()": FunctionFragment;
+    "setPrice(string,uint256)": FunctionFragment;
+    "setRelayer(address)": FunctionFragment;
+    "subscriptionId()": FunctionFragment;
+    "testFulfillRequest(bytes32,bytes,bytes)": FunctionFragment;
+    "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "ADMIN_ROLE"
-      | "DEFAULT_ADMIN_ROLE"
+      | "acceptOwnership"
+      | "checkStringHasValue"
+      | "donID"
+      | "eventPrices"
+      | "gasLimit"
       | "getPrice"
-      | "getRoleAdmin"
-      | "grantRole"
-      | "hasRole"
-      | "renounceRole"
-      | "revokeRole"
-      | "setPriceFeed"
-      | "supportsInterface"
+      | "handleOracleFulfillment"
+      | "isStringEmpty"
+      | "owner"
+      | "relayer"
+      | "requestEvent"
+      | "requestPrice"
+      | "router"
+      | "s_lastError"
+      | "s_lastRequestId"
+      | "s_lastResponse"
+      | "setPrice"
+      | "setRelayer"
+      | "subscriptionId"
+      | "testFulfillRequest"
+      | "transferOwnership"
   ): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "ADMIN_ROLE",
+    functionFragment: "acceptOwnership",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "DEFAULT_ADMIN_ROLE",
-    values?: undefined
+    functionFragment: "checkStringHasValue",
+    values: [PromiseOrValue<string>]
   ): string;
-  encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
+  encodeFunctionData(functionFragment: "donID", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "getRoleAdmin",
-    values: [PromiseOrValue<BytesLike>]
+    functionFragment: "eventPrices",
+    values: [PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "gasLimit", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "grantRole",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "hasRole",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "renounceRole",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "revokeRole",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPriceFeed",
+    functionFragment: "getPrice",
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "supportsInterface",
+    functionFragment: "handleOracleFulfillment",
+    values: [
+      PromiseOrValue<BytesLike>,
+      PromiseOrValue<BytesLike>,
+      PromiseOrValue<BytesLike>
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isStringEmpty",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(functionFragment: "relayer", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "requestEvent",
     values: [PromiseOrValue<BytesLike>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "requestPrice",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(functionFragment: "router", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "s_lastError",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "s_lastRequestId",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "s_lastResponse",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setPrice",
+    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRelayer",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "subscriptionId",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "testFulfillRequest",
+    values: [
+      PromiseOrValue<BytesLike>,
+      PromiseOrValue<BytesLike>,
+      PromiseOrValue<BytesLike>
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferOwnership",
+    values: [PromiseOrValue<string>]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "ADMIN_ROLE", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "DEFAULT_ADMIN_ROLE",
+    functionFragment: "acceptOwnership",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "checkStringHasValue",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "donID", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "eventPrices",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "gasLimit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "getRoleAdmin",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "grantRole", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "hasRole", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceRole",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setPriceFeed",
+    functionFragment: "handleOracleFulfillment",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "supportsInterface",
+    functionFragment: "isStringEmpty",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "relayer", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "requestEvent",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "requestPrice",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "router", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "s_lastError",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "s_lastRequestId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "s_lastResponse",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "setPrice", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setRelayer", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "subscriptionId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "testFulfillRequest",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
 
   events: {
-    "PriceFeedUpdated(address)": EventFragment;
-    "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
-    "RoleGranted(bytes32,address,address)": EventFragment;
-    "RoleRevoked(bytes32,address,address)": EventFragment;
+    "OwnershipTransferRequested(address,address)": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
+    "PriceUpdated(string,uint256)": EventFragment;
+    "RequestFulfilled(bytes32)": EventFragment;
+    "RequestSent(bytes32)": EventFragment;
+    "Response(bytes32,string,bytes,bytes)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "PriceFeedUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RoleAdminChanged"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RoleGranted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RoleRevoked"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferRequested"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "PriceUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RequestFulfilled"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RequestSent"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Response"): EventFragment;
 }
 
-export interface PriceFeedUpdatedEventObject {
-  newPriceFeed: string;
+export interface OwnershipTransferRequestedEventObject {
+  from: string;
+  to: string;
 }
-export type PriceFeedUpdatedEvent = TypedEvent<
+export type OwnershipTransferRequestedEvent = TypedEvent<
+  [string, string],
+  OwnershipTransferRequestedEventObject
+>;
+
+export type OwnershipTransferRequestedEventFilter =
+  TypedEventFilter<OwnershipTransferRequestedEvent>;
+
+export interface OwnershipTransferredEventObject {
+  from: string;
+  to: string;
+}
+export type OwnershipTransferredEvent = TypedEvent<
+  [string, string],
+  OwnershipTransferredEventObject
+>;
+
+export type OwnershipTransferredEventFilter =
+  TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface PriceUpdatedEventObject {
+  eventType: string;
+  price: BigNumber;
+}
+export type PriceUpdatedEvent = TypedEvent<
+  [string, BigNumber],
+  PriceUpdatedEventObject
+>;
+
+export type PriceUpdatedEventFilter = TypedEventFilter<PriceUpdatedEvent>;
+
+export interface RequestFulfilledEventObject {
+  id: string;
+}
+export type RequestFulfilledEvent = TypedEvent<
   [string],
-  PriceFeedUpdatedEventObject
+  RequestFulfilledEventObject
 >;
 
-export type PriceFeedUpdatedEventFilter =
-  TypedEventFilter<PriceFeedUpdatedEvent>;
+export type RequestFulfilledEventFilter =
+  TypedEventFilter<RequestFulfilledEvent>;
 
-export interface RoleAdminChangedEventObject {
-  role: string;
-  previousAdminRole: string;
-  newAdminRole: string;
+export interface RequestSentEventObject {
+  id: string;
 }
-export type RoleAdminChangedEvent = TypedEvent<
-  [string, string, string],
-  RoleAdminChangedEventObject
->;
+export type RequestSentEvent = TypedEvent<[string], RequestSentEventObject>;
 
-export type RoleAdminChangedEventFilter =
-  TypedEventFilter<RoleAdminChangedEvent>;
+export type RequestSentEventFilter = TypedEventFilter<RequestSentEvent>;
 
-export interface RoleGrantedEventObject {
-  role: string;
-  account: string;
-  sender: string;
+export interface ResponseEventObject {
+  requestId: string;
+  eventType: string;
+  response: string;
+  err: string;
 }
-export type RoleGrantedEvent = TypedEvent<
-  [string, string, string],
-  RoleGrantedEventObject
+export type ResponseEvent = TypedEvent<
+  [string, string, string, string],
+  ResponseEventObject
 >;
 
-export type RoleGrantedEventFilter = TypedEventFilter<RoleGrantedEvent>;
-
-export interface RoleRevokedEventObject {
-  role: string;
-  account: string;
-  sender: string;
-}
-export type RoleRevokedEvent = TypedEvent<
-  [string, string, string],
-  RoleRevokedEventObject
->;
-
-export type RoleRevokedEventFilter = TypedEventFilter<RoleRevokedEvent>;
+export type ResponseEventFilter = TypedEventFilter<ResponseEvent>;
 
 export interface ChainlinkPriceProvider extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -206,277 +326,469 @@ export interface ChainlinkPriceProvider extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
+    acceptOwnership(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
 
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
+    checkStringHasValue(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
-    getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+    donID(overrides?: CallOverrides): Promise<[string]>;
 
-    getRoleAdmin(
-      role: PromiseOrValue<BytesLike>,
+    eventPrices(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    gasLimit(overrides?: CallOverrides): Promise<[number]>;
+
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    handleOracleFulfillment(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    isStringEmpty(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    owner(overrides?: CallOverrides): Promise<[string]>;
+
+    relayer(overrides?: CallOverrides): Promise<[string]>;
+
+    requestEvent(
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    grantRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    requestPrice(
+      eventId: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    hasRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    router(overrides?: CallOverrides): Promise<[string]>;
 
-    renounceRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    s_lastError(overrides?: CallOverrides): Promise<[string]>;
+
+    s_lastRequestId(overrides?: CallOverrides): Promise<[string]>;
+
+    s_lastResponse(overrides?: CallOverrides): Promise<[string]>;
+
+    setPrice(
+      eventId: PromiseOrValue<string>,
+      price: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    revokeRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    setRelayer(
+      newRelayer: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setPriceFeed(
-      newPriceFeed: PromiseOrValue<string>,
+    subscriptionId(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    testFulfillRequest(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    supportsInterface(
-      interfaceId: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    transferOwnership(
+      to: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
   };
 
-  ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+  acceptOwnership(
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
-  DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+  checkStringHasValue(
+    str: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
-  getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+  donID(overrides?: CallOverrides): Promise<string>;
 
-  getRoleAdmin(
-    role: PromiseOrValue<BytesLike>,
+  eventPrices(
+    arg0: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  gasLimit(overrides?: CallOverrides): Promise<number>;
+
+  getPrice(
+    eventId: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  handleOracleFulfillment(
+    requestId: PromiseOrValue<BytesLike>,
+    response: PromiseOrValue<BytesLike>,
+    err: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  isStringEmpty(
+    str: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  owner(overrides?: CallOverrides): Promise<string>;
+
+  relayer(overrides?: CallOverrides): Promise<string>;
+
+  requestEvent(
+    arg0: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<string>;
 
-  grantRole(
-    role: PromiseOrValue<BytesLike>,
-    account: PromiseOrValue<string>,
+  requestPrice(
+    eventId: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  hasRole(
-    role: PromiseOrValue<BytesLike>,
-    account: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  router(overrides?: CallOverrides): Promise<string>;
 
-  renounceRole(
-    role: PromiseOrValue<BytesLike>,
-    account: PromiseOrValue<string>,
+  s_lastError(overrides?: CallOverrides): Promise<string>;
+
+  s_lastRequestId(overrides?: CallOverrides): Promise<string>;
+
+  s_lastResponse(overrides?: CallOverrides): Promise<string>;
+
+  setPrice(
+    eventId: PromiseOrValue<string>,
+    price: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  revokeRole(
-    role: PromiseOrValue<BytesLike>,
-    account: PromiseOrValue<string>,
+  setRelayer(
+    newRelayer: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setPriceFeed(
-    newPriceFeed: PromiseOrValue<string>,
+  subscriptionId(overrides?: CallOverrides): Promise<BigNumber>;
+
+  testFulfillRequest(
+    requestId: PromiseOrValue<BytesLike>,
+    response: PromiseOrValue<BytesLike>,
+    err: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  supportsInterface(
-    interfaceId: PromiseOrValue<BytesLike>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  transferOwnership(
+    to: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   callStatic: {
-    ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+    acceptOwnership(overrides?: CallOverrides): Promise<void>;
 
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+    checkStringHasValue(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+    donID(overrides?: CallOverrides): Promise<string>;
 
-    getRoleAdmin(
-      role: PromiseOrValue<BytesLike>,
+    eventPrices(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    gasLimit(overrides?: CallOverrides): Promise<number>;
+
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    handleOracleFulfillment(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    isStringEmpty(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    owner(overrides?: CallOverrides): Promise<string>;
+
+    relayer(overrides?: CallOverrides): Promise<string>;
+
+    requestEvent(
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
-    grantRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    requestPrice(
+      eventId: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    hasRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    router(overrides?: CallOverrides): Promise<string>;
 
-    renounceRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    s_lastError(overrides?: CallOverrides): Promise<string>;
+
+    s_lastRequestId(overrides?: CallOverrides): Promise<string>;
+
+    s_lastResponse(overrides?: CallOverrides): Promise<string>;
+
+    setPrice(
+      eventId: PromiseOrValue<string>,
+      price: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    revokeRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    setRelayer(
+      newRelayer: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setPriceFeed(
-      newPriceFeed: PromiseOrValue<string>,
+    subscriptionId(overrides?: CallOverrides): Promise<BigNumber>;
+
+    testFulfillRequest(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    supportsInterface(
-      interfaceId: PromiseOrValue<BytesLike>,
+    transferOwnership(
+      to: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<boolean>;
+    ): Promise<void>;
   };
 
   filters: {
-    "PriceFeedUpdated(address)"(
-      newPriceFeed?: null
-    ): PriceFeedUpdatedEventFilter;
-    PriceFeedUpdated(newPriceFeed?: null): PriceFeedUpdatedEventFilter;
+    "OwnershipTransferRequested(address,address)"(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null
+    ): OwnershipTransferRequestedEventFilter;
+    OwnershipTransferRequested(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null
+    ): OwnershipTransferRequestedEventFilter;
 
-    "RoleAdminChanged(bytes32,bytes32,bytes32)"(
-      role?: PromiseOrValue<BytesLike> | null,
-      previousAdminRole?: PromiseOrValue<BytesLike> | null,
-      newAdminRole?: PromiseOrValue<BytesLike> | null
-    ): RoleAdminChangedEventFilter;
-    RoleAdminChanged(
-      role?: PromiseOrValue<BytesLike> | null,
-      previousAdminRole?: PromiseOrValue<BytesLike> | null,
-      newAdminRole?: PromiseOrValue<BytesLike> | null
-    ): RoleAdminChangedEventFilter;
+    "OwnershipTransferred(address,address)"(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null
+    ): OwnershipTransferredEventFilter;
+    OwnershipTransferred(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null
+    ): OwnershipTransferredEventFilter;
 
-    "RoleGranted(bytes32,address,address)"(
-      role?: PromiseOrValue<BytesLike> | null,
-      account?: PromiseOrValue<string> | null,
-      sender?: PromiseOrValue<string> | null
-    ): RoleGrantedEventFilter;
-    RoleGranted(
-      role?: PromiseOrValue<BytesLike> | null,
-      account?: PromiseOrValue<string> | null,
-      sender?: PromiseOrValue<string> | null
-    ): RoleGrantedEventFilter;
+    "PriceUpdated(string,uint256)"(
+      eventType?: null,
+      price?: null
+    ): PriceUpdatedEventFilter;
+    PriceUpdated(eventType?: null, price?: null): PriceUpdatedEventFilter;
 
-    "RoleRevoked(bytes32,address,address)"(
-      role?: PromiseOrValue<BytesLike> | null,
-      account?: PromiseOrValue<string> | null,
-      sender?: PromiseOrValue<string> | null
-    ): RoleRevokedEventFilter;
-    RoleRevoked(
-      role?: PromiseOrValue<BytesLike> | null,
-      account?: PromiseOrValue<string> | null,
-      sender?: PromiseOrValue<string> | null
-    ): RoleRevokedEventFilter;
+    "RequestFulfilled(bytes32)"(
+      id?: PromiseOrValue<BytesLike> | null
+    ): RequestFulfilledEventFilter;
+    RequestFulfilled(
+      id?: PromiseOrValue<BytesLike> | null
+    ): RequestFulfilledEventFilter;
+
+    "RequestSent(bytes32)"(
+      id?: PromiseOrValue<BytesLike> | null
+    ): RequestSentEventFilter;
+    RequestSent(id?: PromiseOrValue<BytesLike> | null): RequestSentEventFilter;
+
+    "Response(bytes32,string,bytes,bytes)"(
+      requestId?: PromiseOrValue<BytesLike> | null,
+      eventType?: null,
+      response?: null,
+      err?: null
+    ): ResponseEventFilter;
+    Response(
+      requestId?: PromiseOrValue<BytesLike> | null,
+      eventType?: null,
+      response?: null,
+      err?: null
+    ): ResponseEventFilter;
   };
 
   estimateGas: {
-    ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+    acceptOwnership(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
 
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getRoleAdmin(
-      role: PromiseOrValue<BytesLike>,
+    checkStringHasValue(
+      str: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    grantRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    donID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    hasRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    eventPrices(
+      arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    renounceRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    gasLimit(overrides?: CallOverrides): Promise<BigNumber>;
 
-    revokeRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPriceFeed(
-      newPriceFeed: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    supportsInterface(
-      interfaceId: PromiseOrValue<BytesLike>,
+    getPrice(
+      eventId: PromiseOrValue<string>,
       overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    handleOracleFulfillment(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    isStringEmpty(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    relayer(overrides?: CallOverrides): Promise<BigNumber>;
+
+    requestEvent(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    requestPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    router(overrides?: CallOverrides): Promise<BigNumber>;
+
+    s_lastError(overrides?: CallOverrides): Promise<BigNumber>;
+
+    s_lastRequestId(overrides?: CallOverrides): Promise<BigNumber>;
+
+    s_lastResponse(overrides?: CallOverrides): Promise<BigNumber>;
+
+    setPrice(
+      eventId: PromiseOrValue<string>,
+      price: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setRelayer(
+      newRelayer: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    subscriptionId(overrides?: CallOverrides): Promise<BigNumber>;
+
+    testFulfillRequest(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    transferOwnership(
+      to: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    ADMIN_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    DEFAULT_ADMIN_ROLE(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getRoleAdmin(
-      role: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    grantRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    acceptOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    hasRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
+    checkStringHasValue(
+      str: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    renounceRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    donID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    revokeRole(
-      role: PromiseOrValue<BytesLike>,
-      account: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPriceFeed(
-      newPriceFeed: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    supportsInterface(
-      interfaceId: PromiseOrValue<BytesLike>,
+    eventPrices(
+      arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    gasLimit(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    handleOracleFulfillment(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    isStringEmpty(
+      str: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    relayer(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    requestEvent(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    requestPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    router(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    s_lastError(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    s_lastRequestId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    s_lastResponse(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    setPrice(
+      eventId: PromiseOrValue<string>,
+      price: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setRelayer(
+      newRelayer: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    subscriptionId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    testFulfillRequest(
+      requestId: PromiseOrValue<BytesLike>,
+      response: PromiseOrValue<BytesLike>,
+      err: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    transferOwnership(
+      to: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };
 }

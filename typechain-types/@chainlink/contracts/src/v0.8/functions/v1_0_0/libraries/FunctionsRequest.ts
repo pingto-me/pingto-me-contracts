@@ -17,32 +17,34 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
-} from "../../common";
+} from "../../../../../../../common";
 
-export interface IPriceProviderInterface extends utils.Interface {
+export interface FunctionsRequestInterface extends utils.Interface {
   functions: {
-    "getPrice(string)": FunctionFragment;
+    "REQUEST_DATA_VERSION()": FunctionFragment;
   };
 
-  getFunction(nameOrSignatureOrTopic: "getPrice"): FunctionFragment;
+  getFunction(nameOrSignatureOrTopic: "REQUEST_DATA_VERSION"): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "getPrice",
-    values: [PromiseOrValue<string>]
+    functionFragment: "REQUEST_DATA_VERSION",
+    values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "REQUEST_DATA_VERSION",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
 
-export interface IPriceProvider extends BaseContract {
+export interface FunctionsRequest extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: IPriceProviderInterface;
+  interface: FunctionsRequestInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -64,36 +66,23 @@ export interface IPriceProvider extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    getPrice(
-      eventId: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    REQUEST_DATA_VERSION(overrides?: CallOverrides): Promise<[number]>;
   };
 
-  getPrice(
-    eventId: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  REQUEST_DATA_VERSION(overrides?: CallOverrides): Promise<number>;
 
   callStatic: {
-    getPrice(
-      eventId: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    REQUEST_DATA_VERSION(overrides?: CallOverrides): Promise<number>;
   };
 
   filters: {};
 
   estimateGas: {
-    getPrice(
-      eventId: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    REQUEST_DATA_VERSION(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    getPrice(
-      eventId: PromiseOrValue<string>,
+    REQUEST_DATA_VERSION(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

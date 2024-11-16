@@ -31,7 +31,7 @@ export interface ManualPriceProviderInterface extends utils.Interface {
   functions: {
     "ADMIN_ROLE()": FunctionFragment;
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
-    "getPrice()": FunctionFragment;
+    "getPrice(string)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "grantRole(bytes32,address)": FunctionFragment;
     "hasRole(bytes32,address)": FunctionFragment;
@@ -63,7 +63,10 @@ export interface ManualPriceProviderInterface extends utils.Interface {
     functionFragment: "DEFAULT_ADMIN_ROLE",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getPrice",
+    values: [PromiseOrValue<string>]
+  ): string;
   encodeFunctionData(
     functionFragment: "getRoleAdmin",
     values: [PromiseOrValue<BytesLike>]
@@ -207,7 +210,10 @@ export interface ManualPriceProvider extends BaseContract {
 
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
 
-    getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -253,7 +259,10 @@ export interface ManualPriceProvider extends BaseContract {
 
   DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
 
-  getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+  getPrice(
+    eventId: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   getRoleAdmin(
     role: PromiseOrValue<BytesLike>,
@@ -299,7 +308,10 @@ export interface ManualPriceProvider extends BaseContract {
 
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
 
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -384,7 +396,10 @@ export interface ManualPriceProvider extends BaseContract {
 
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,
@@ -433,7 +448,10 @@ export interface ManualPriceProvider extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getPrice(
+      eventId: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     getRoleAdmin(
       role: PromiseOrValue<BytesLike>,

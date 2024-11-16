@@ -31,7 +31,7 @@ contract ManualPriceProvider is IPriceProvider, AccessControl {
     }
 
     // Function to get the current price of the native token
-    function getPrice() external view override returns (uint256) {
+    function getPrice(string memory eventId) external view override returns (uint256) {
         return price;
     }
 }

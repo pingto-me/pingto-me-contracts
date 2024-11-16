@@ -11,7 +11,13 @@ import type {
 
 const _abi = [
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "string",
+        name: "eventId",
+        type: "string",
+      },
+    ],
     name: "getPrice",
     outputs: [
       {

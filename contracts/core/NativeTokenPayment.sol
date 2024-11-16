@@ -54,6 +54,10 @@ contract NativeTokenPayment is AccessControl, ReentrancyGuard {
         priceProvider = IPriceProvider(newPriceProvider);
     }
 
+    function setUseChainlink(bool _use) external onlyRole(ADMIN_ROLE) {
+        useChainlink = _use;
+    }
+
     // Function to make a payment in native tokens
     // The function is protected against re-entrancy attacks using the nonReentrant modifier
     function pay(string memory orderId, string memory eventId) external payable nonReentrant {

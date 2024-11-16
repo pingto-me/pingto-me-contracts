@@ -148,6 +148,14 @@ const config: any = {
     },
     customChains: [
       {
+        network: 'sepolia',
+        chainId: 11155111,
+        urls: {
+          apiURL: 'https://eth-sepolia.blockscout.com/api',
+          browserURL: 'https://eth-sepolia.blockscout.com/',
+        },
+      },
+      {
         network: 'bkc_testnet',
         chainId: 25925,
         urls: {

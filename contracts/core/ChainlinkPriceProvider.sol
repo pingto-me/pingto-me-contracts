@@ -27,12 +27,12 @@ contract ChainlinkPriceProvider is FunctionsClient, ConfirmedOwner {
 
     string source = "const eventType = args[0];"
     "const apiResponse = await Functions.makeHttpRequest({url:`https://"
-    "asia-southeast1-waste-protocol.cloudfunctions.net/api/public/event-items/${eventType}`});"
+    "convertticketprice-j3hdpkv3tq-uc.a.run.app/convertTicketPrice?eventId=${eventType}`});"
     "if (apiResponse.error) {"
     "throw Error(`Request failed`);"
     "}"
     "const { data } = apiResponse;"
-    "const _price = data.price;"
+    "const _price = data.eth;"
     "const price = Math.floor(_price * Math.pow(10,18));"
     "return Functions.encodeUint256(price);";
 

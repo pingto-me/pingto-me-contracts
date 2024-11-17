@@ -1,7 +1,9 @@
-
+<br>
 <div align="center">
 <img src="assets/images/logo.png" alt="Logo" width="200px">
 </div>
+
+<br>
 
 NFTs Personal Verify Card
 This is a verification card to take you connect without unlimited to Web3

@@ -7,9 +7,7 @@ This is a verification card to take you connect without unlimited to Web3
 
 ### Card Example
 
-<img src="assets/images/01.png" alt="Logo" width="30%">
-<img src="assets/images/02.png" alt="Logo" width="30%">
-<img src="assets/images/03.png" alt="Logo" width="30%">
+<img src="assets/images/all.png" alt="Logo" width="80%">
 
 ## Repositories
 

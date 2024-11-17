@@ -1,14 +1,15 @@
 
---- 
+<div align="center">
 <img src="assets/images/logo.png" alt="Logo" width="200px">
+</div>
 
 NFTs Personal Verify Card
 This is a verification card to take you connect without unlimited to Web3
 
 ### Card Example
-
+<div align="center">
 <img src="assets/images/all.png" alt="Logo" width="80%">
-
+</div>
 ## Repositories
 
 - Frontend : https://github.com/pingto-me/pingto-me-frontend

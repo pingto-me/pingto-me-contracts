@@ -44,5 +44,7 @@ You can find the **ChainlinkPriceProvider** contract [here](contracts/core/Chain
 | Sepolia Testnet     | ManualPriceProvider     | 0xb327A4F96Bc69f624c577B3f1508044e266f1808 |
 | Sepolia Testnet     | NativeTokenPayment      | 0x11f0aeb16BCC0d5BeF9a17a52d2D321d38bA287a |
 | Sepolia Testnet     | ChainlinkPriceProvider  | 0xf07c79d75Fc04eb4d842e8c1CEFBe132eC51e6B2 |
+| Linea Testnet       | ManualPriceProvider     | 0x0ef2B78F9674BA6B7aAbE06889f8Ac6AdA3db177 |
+| Linea Testnet       | NativeTokenPayment      | 0x33f61eddcc67F0f311a423C584d9cE81717474a9 |
 
 

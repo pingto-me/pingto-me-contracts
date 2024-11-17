@@ -17,6 +17,11 @@ This is a verification card to take you connect without unlimited to Web3
 - Attestation : https://github.com/pingto-me/pingto-me-attestation
 - Figma : [Link](https://www.figma.com/design/gWvVN7ncuDoy05TIbok2ji/Design?node-id=4131-38949&t=wnN4NB0UNBn9OPiD-1)
 
+### Chainlink Price Provider
+The `ChainlinkPriceProvider.sol` contract is responsible for integrating the our custom api to feed card printing package price to payment contract to get reliable price data.
+
+You can find the **ChainlinkPriceProvider** contract [here](contracts/core/ChainlinkPriceProvider.sol) (contracts/core/ChainlinkPriceProvider.sol).
+
 ## Smart Contract Deployment
 
 | Chain               | Name                    | Address                                    |
